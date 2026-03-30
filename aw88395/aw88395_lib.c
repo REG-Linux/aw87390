@@ -1,3 +1,4 @@
+#include "compat.h"
 // SPDX-License-Identifier: GPL-2.0-only
 //
 // aw88395_lib.c  -- ACF bin parsing and check library file for aw88395
