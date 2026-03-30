@@ -595,6 +595,8 @@ static int aw87390_i2c_probe(struct i2c_client *i2c, const struct i2c_device_id 
 static const struct of_device_id aw87390_of_match[] = {
 	{ .compatible = "awinic,aw87390" },
 	{ .compatible = "anbernic,rgds-amp", .data = &soc_codec_dev_anbernic_rgds },
+	{ .compatible = "aw,aw87391-left", .data = &soc_codec_dev_anbernic_rgds },
+	{ .compatible = "aw,aw87391-right", .data = &soc_codec_dev_anbernic_rgds },
 	{},
 };
 MODULE_DEVICE_TABLE(of, aw87390_of_match);
