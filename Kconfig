@@ -1,0 +1,5 @@
+config SND_SOC_AW87390
+	tristate "Soc Audio for awinic aw87390 (backported)"
+	depends on I2C
+	select REGMAP_I2C
+	select CRC8
