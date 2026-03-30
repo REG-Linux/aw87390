@@ -9,6 +9,7 @@
 //
 
 #include <linux/crc32.h>
+#define crc32c(seed, d, sz) crc32(seed, d, sz)
 #include <linux/i2c.h>
 #include <linux/minmax.h>
 #include <linux/regmap.h>
