@@ -198,11 +198,11 @@ static int aw87390_profile_info(struct snd_kcontrol *kcontrol,
 
 	ret = aw87390_dev_get_prof_name(aw87390->aw_pa, count, &prof_name);
 	if (ret) {
-		strscpy(uinfo->value.enumerated.name, "null");
+		strscpy(uinfo->value.enumerated.name, "null", sizeof(uinfo->value.enumerated.name));
 		return 0;
 	}
 
-	strscpy(uinfo->value.enumerated.name, prof_name);
+	strscpy(uinfo->value.enumerated.name, prof_name, sizeof(uinfo->value.enumerated.name));
 
 	return 0;
 }
@@ -538,7 +538,7 @@ static int aw87390_init(struct aw87390 *aw87390, struct i2c_client *i2c, struct 
 	return 0;
 }
 
-static int aw87390_i2c_probe(struct i2c_client *i2c)
+static int aw87390_i2c_probe(struct i2c_client *i2c, const struct i2c_device_id *id)
 {
 	struct aw87390 *aw87390;
 	const struct snd_soc_component_driver *priv;
@@ -576,7 +576,7 @@ static int aw87390_i2c_probe(struct i2c_client *i2c)
 					&soc_codec_dev_aw87390, NULL, 0);
 		break;
 	case AW87391_CHIP_ID:
-		priv = of_device_get_match_data(&i2c->dev);
+		priv = device_get_match_data(&i2c->dev);
 		if (!priv)
 			return dev_err_probe(&i2c->dev, -EINVAL,
 					     "aw87391 not currently supported\n");
